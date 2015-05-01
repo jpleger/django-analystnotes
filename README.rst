@@ -29,6 +29,14 @@ Then use it in a project::
 
     import django-analystnotes
 
+Setup analystnotes and rest_framework in settings.py
+
+    INSTALLED_APPS = (
+        ...
+        'rest_framework',
+        'analystnotes',
+    )
+
 Features
 --------
 
