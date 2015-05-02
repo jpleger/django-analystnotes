@@ -7,15 +7,9 @@ class ObjectOwnerFieldPermissionsFilter(filters.BaseFilterBackend):
     A filter backend that limits results to those where the requesting user
     has read object level permissions.
     """
-    user_field = 'owner'
 
     def filter_queryset(self, request, queryset, view):
-        user = request.user
-        kwargs = {
-            self.user_field: user,
-            }
-
-        return queryset.filter(**kwargs)
+        return queryset.filter(owner=request.user)
 
 
 class ProjectOwnerFieldPermissionsFilter(filters.BaseFilterBackend):
@@ -23,15 +17,9 @@ class ProjectOwnerFieldPermissionsFilter(filters.BaseFilterBackend):
     A filter backend that limits results to those where the requesting user
     has read object level permissions.
     """
-    user_field = 'owner'
 
     def filter_queryset(self, request, queryset, view):
-        user = request.user
-        kwargs = {
-            self.user_field: user,
-            }
-
-        return queryset.filter(**kwargs)
+        return queryset.filter(project__owner=request.user)
 
 
 class OrderByNameFilter(filters.BaseFilterBackend):

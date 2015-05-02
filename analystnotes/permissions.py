@@ -16,10 +16,7 @@ class ObjectOwnerPermission(permissions.BasePermission):
         # If no owner permission granted
         if not hasattr(obj, 'owner'):
             return False
-        # If method is a get request, should return true(Should be filtered by the filters)
-        # if request.method == 'GET':
-        #     return True
-        # If this is owned by the user, Accept
+        # If this is owned by the user, the user has permission to modify object
         if request.user == obj.owner:
             return True
         return False
@@ -28,6 +25,7 @@ class ObjectOwnerPermission(permissions.BasePermission):
 class ProjectOwnerPermission(permissions.BasePermission):
     """
     Requests on everything but post requires object permissions.
+    Technically this shouldn't run, since filtering should take care of most use cases.
     """
 
     def has_object_permission(self, request, view, obj):
