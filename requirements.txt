@@ -1,6 +1,6 @@
 django>=1.8.0
 wheel==0.24.0
 # Additional requirements go here
-djangorestframework==3.1.1
+djangorestframework==3.11.2
 Markdown==2.6.2
 django-filter==0.9.2
